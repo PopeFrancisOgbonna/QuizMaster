@@ -8,10 +8,12 @@ using System.Data;
 
 namespace QuizMaster
 {
+
     class Database_Connectivity
     {
-        static string connectionString = @"Data Source=.;Initial Catalog=QuizMaster;Integrated Security=true;";
-        SqlConnection connect = new SqlConnection(connectionString);
+        public static string connectionString = @"Data Source=.;Initial Catalog=QuizMaster;Integrated Security=true;";
+
+        public SqlConnection connect = new SqlConnection(connectionString);
 
         public string message;
 
@@ -34,14 +36,14 @@ namespace QuizMaster
         }
 
         public DataTable tbl = new DataTable();
-        public void viewQuestions()
+        public void viewQuestions()//view all question 
         {
             string query = "select Question.Quest_Id as 'Question Number',Subject.Subject_Id as 'Subject',Questions as 'Question',Class.Class_Id as'Class' from Question, Class, Subject";
             SqlCommand command = new SqlCommand(query, connect);
             SqlDataAdapter adapt = new SqlDataAdapter(command);
             adapt.Fill(tbl);
         }
-        public void viewStudent(string klass)
+        public void viewStudent(string klass) // view student from a specific class
         {
             int id = 0;
             switch (klass)
@@ -71,7 +73,7 @@ namespace QuizMaster
             SqlDataAdapter adapt = new SqlDataAdapter(command);
             adapt.Fill(tbl);
         }
-        public void viewParticipants()
+        public void viewParticipants()//shows all participants 
         {
             string query = "select concat(Student.FName, ' ', Student.LName) as 'Name', Class.ClassName as 'Class',Groups.GroupName as 'Group',Groups.Instructor as 'Class Teacher' from Student, Class, Groups where Class.Class_Id = Student.Class_Id and Student.Group_Id = Groups.Group_Id;";
             SqlCommand command = new SqlCommand(query, connect);

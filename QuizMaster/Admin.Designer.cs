@@ -38,6 +38,15 @@
             this.enginLogo = new System.Windows.Forms.PictureBox();
             this.btnStart = new System.Windows.Forms.Button();
             this.contentPane = new System.Windows.Forms.Panel();
+            this.viewPane = new System.Windows.Forms.Panel();
+            this.btnAdminViewAll = new System.Windows.Forms.Button();
+            this.btnAdminView = new System.Windows.Forms.Button();
+            this.adminViewDataGrid = new System.Windows.Forms.DataGridView();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtViewClass = new System.Windows.Forms.TextBox();
+            this.txtViewSubject = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.lblSubject = new System.Windows.Forms.Label();
             this.registerPane = new System.Windows.Forms.Panel();
             this.btnDeleteParticipant = new System.Windows.Forms.Button();
             this.btnUpdateParticipant = new System.Windows.Forms.Button();
@@ -56,27 +65,18 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.viewPane = new System.Windows.Forms.Panel();
-            this.btnAdminViewAll = new System.Windows.Forms.Button();
-            this.btnAdminView = new System.Windows.Forms.Button();
-            this.adminViewDataGrid = new System.Windows.Forms.DataGridView();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.txtViewClass = new System.Windows.Forms.TextBox();
-            this.txtViewSubject = new System.Windows.Forms.TextBox();
-            this.label20 = new System.Windows.Forms.Label();
-            this.lblSubject = new System.Windows.Forms.Label();
             this.loadQuestionpane = new System.Windows.Forms.Panel();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.txtLQid = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.btnAdminQUpdate = new System.Windows.Forms.Button();
             this.btnAdminQDelete = new System.Windows.Forms.Button();
             this.btnAdminQSave = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.loadQuestGrid = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtLQmark = new System.Windows.Forms.TextBox();
+            this.txtLQquestion = new System.Windows.Forms.TextBox();
+            this.txtLQclass = new System.Windows.Forms.TextBox();
+            this.txtLQsubject = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -96,14 +96,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.nyscLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.enginLogo)).BeginInit();
             this.contentPane.SuspendLayout();
-            this.registerPane.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.participantDataGride)).BeginInit();
-            this.studentRegDetails.SuspendLayout();
             this.viewPane.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.adminViewDataGrid)).BeginInit();
             this.groupBox2.SuspendLayout();
+            this.registerPane.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.participantDataGride)).BeginInit();
+            this.studentRegDetails.SuspendLayout();
             this.loadQuestionpane.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.loadQuestGrid)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.sideBarPane.SuspendLayout();
             this.quizHeaderPane.SuspendLayout();
@@ -197,13 +197,107 @@
             // contentPane
             // 
             this.contentPane.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.contentPane.Controls.Add(this.loadQuestionpane);
             this.contentPane.Controls.Add(this.viewPane);
             this.contentPane.Controls.Add(this.registerPane);
-            this.contentPane.Controls.Add(this.loadQuestionpane);
             this.contentPane.Location = new System.Drawing.Point(153, 157);
             this.contentPane.Name = "contentPane";
             this.contentPane.Size = new System.Drawing.Size(1060, 453);
             this.contentPane.TabIndex = 2;
+            // 
+            // viewPane
+            // 
+            this.viewPane.Controls.Add(this.btnAdminViewAll);
+            this.viewPane.Controls.Add(this.btnAdminView);
+            this.viewPane.Controls.Add(this.adminViewDataGrid);
+            this.viewPane.Controls.Add(this.groupBox2);
+            this.viewPane.Location = new System.Drawing.Point(0, 0);
+            this.viewPane.Name = "viewPane";
+            this.viewPane.Size = new System.Drawing.Size(1059, 453);
+            this.viewPane.TabIndex = 10;
+            this.viewPane.Visible = false;
+            // 
+            // btnAdminViewAll
+            // 
+            this.btnAdminViewAll.BackColor = System.Drawing.Color.MediumTurquoise;
+            this.btnAdminViewAll.Font = new System.Drawing.Font("Modern No. 20", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdminViewAll.ForeColor = System.Drawing.Color.White;
+            this.btnAdminViewAll.Location = new System.Drawing.Point(189, 212);
+            this.btnAdminViewAll.Name = "btnAdminViewAll";
+            this.btnAdminViewAll.Size = new System.Drawing.Size(133, 37);
+            this.btnAdminViewAll.TabIndex = 3;
+            this.btnAdminViewAll.Text = "View All";
+            this.btnAdminViewAll.UseVisualStyleBackColor = false;
+            this.btnAdminViewAll.Click += new System.EventHandler(this.btnAdminViewAll_Click);
+            // 
+            // btnAdminView
+            // 
+            this.btnAdminView.BackColor = System.Drawing.Color.ForestGreen;
+            this.btnAdminView.Font = new System.Drawing.Font("Modern No. 20", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdminView.ForeColor = System.Drawing.Color.White;
+            this.btnAdminView.Location = new System.Drawing.Point(78, 212);
+            this.btnAdminView.Name = "btnAdminView";
+            this.btnAdminView.Size = new System.Drawing.Size(94, 37);
+            this.btnAdminView.TabIndex = 1;
+            this.btnAdminView.Text = "View";
+            this.btnAdminView.UseVisualStyleBackColor = false;
+            this.btnAdminView.Click += new System.EventHandler(this.btnAdminView_Click);
+            // 
+            // adminViewDataGrid
+            // 
+            this.adminViewDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.adminViewDataGrid.Location = new System.Drawing.Point(380, 5);
+            this.adminViewDataGrid.Name = "adminViewDataGrid";
+            this.adminViewDataGrid.Size = new System.Drawing.Size(673, 442);
+            this.adminViewDataGrid.TabIndex = 0;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.txtViewClass);
+            this.groupBox2.Controls.Add(this.txtViewSubject);
+            this.groupBox2.Controls.Add(this.label20);
+            this.groupBox2.Controls.Add(this.lblSubject);
+            this.groupBox2.ForeColor = System.Drawing.Color.White;
+            this.groupBox2.Location = new System.Drawing.Point(19, 67);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(355, 120);
+            this.groupBox2.TabIndex = 0;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Details";
+            // 
+            // txtViewClass
+            // 
+            this.txtViewClass.Location = new System.Drawing.Point(110, 75);
+            this.txtViewClass.Name = "txtViewClass";
+            this.txtViewClass.Size = new System.Drawing.Size(230, 26);
+            this.txtViewClass.TabIndex = 5;
+            // 
+            // txtViewSubject
+            // 
+            this.txtViewSubject.Location = new System.Drawing.Point(110, 34);
+            this.txtViewSubject.Name = "txtViewSubject";
+            this.txtViewSubject.Size = new System.Drawing.Size(230, 26);
+            this.txtViewSubject.TabIndex = 4;
+            this.txtViewSubject.Visible = false;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(15, 78);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(53, 20);
+            this.label20.TabIndex = 1;
+            this.label20.Text = "Class";
+            // 
+            // lblSubject
+            // 
+            this.lblSubject.AutoSize = true;
+            this.lblSubject.Location = new System.Drawing.Point(15, 37);
+            this.lblSubject.Name = "lblSubject";
+            this.lblSubject.Size = new System.Drawing.Size(70, 20);
+            this.lblSubject.TabIndex = 0;
+            this.lblSubject.Text = "Subject";
+            this.lblSubject.Visible = false;
             // 
             // registerPane
             // 
@@ -385,108 +479,14 @@
             this.label6.TabIndex = 0;
             this.label6.Text = "First Name";
             // 
-            // viewPane
-            // 
-            this.viewPane.Controls.Add(this.btnAdminViewAll);
-            this.viewPane.Controls.Add(this.btnAdminView);
-            this.viewPane.Controls.Add(this.adminViewDataGrid);
-            this.viewPane.Controls.Add(this.groupBox2);
-            this.viewPane.Location = new System.Drawing.Point(0, 0);
-            this.viewPane.Name = "viewPane";
-            this.viewPane.Size = new System.Drawing.Size(1059, 453);
-            this.viewPane.TabIndex = 10;
-            this.viewPane.Visible = false;
-            // 
-            // btnAdminViewAll
-            // 
-            this.btnAdminViewAll.BackColor = System.Drawing.Color.MediumTurquoise;
-            this.btnAdminViewAll.Font = new System.Drawing.Font("Modern No. 20", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdminViewAll.ForeColor = System.Drawing.Color.White;
-            this.btnAdminViewAll.Location = new System.Drawing.Point(189, 212);
-            this.btnAdminViewAll.Name = "btnAdminViewAll";
-            this.btnAdminViewAll.Size = new System.Drawing.Size(133, 37);
-            this.btnAdminViewAll.TabIndex = 3;
-            this.btnAdminViewAll.Text = "View All";
-            this.btnAdminViewAll.UseVisualStyleBackColor = false;
-            this.btnAdminViewAll.Click += new System.EventHandler(this.btnAdminViewAll_Click);
-            // 
-            // btnAdminView
-            // 
-            this.btnAdminView.BackColor = System.Drawing.Color.ForestGreen;
-            this.btnAdminView.Font = new System.Drawing.Font("Modern No. 20", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdminView.ForeColor = System.Drawing.Color.White;
-            this.btnAdminView.Location = new System.Drawing.Point(78, 212);
-            this.btnAdminView.Name = "btnAdminView";
-            this.btnAdminView.Size = new System.Drawing.Size(94, 37);
-            this.btnAdminView.TabIndex = 1;
-            this.btnAdminView.Text = "View";
-            this.btnAdminView.UseVisualStyleBackColor = false;
-            this.btnAdminView.Click += new System.EventHandler(this.btnAdminView_Click);
-            // 
-            // adminViewDataGrid
-            // 
-            this.adminViewDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.adminViewDataGrid.Location = new System.Drawing.Point(380, 5);
-            this.adminViewDataGrid.Name = "adminViewDataGrid";
-            this.adminViewDataGrid.Size = new System.Drawing.Size(673, 442);
-            this.adminViewDataGrid.TabIndex = 0;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.txtViewClass);
-            this.groupBox2.Controls.Add(this.txtViewSubject);
-            this.groupBox2.Controls.Add(this.label20);
-            this.groupBox2.Controls.Add(this.lblSubject);
-            this.groupBox2.ForeColor = System.Drawing.Color.White;
-            this.groupBox2.Location = new System.Drawing.Point(19, 67);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(355, 120);
-            this.groupBox2.TabIndex = 0;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Details";
-            // 
-            // txtViewClass
-            // 
-            this.txtViewClass.Location = new System.Drawing.Point(110, 75);
-            this.txtViewClass.Name = "txtViewClass";
-            this.txtViewClass.Size = new System.Drawing.Size(230, 26);
-            this.txtViewClass.TabIndex = 5;
-            // 
-            // txtViewSubject
-            // 
-            this.txtViewSubject.Location = new System.Drawing.Point(110, 34);
-            this.txtViewSubject.Name = "txtViewSubject";
-            this.txtViewSubject.Size = new System.Drawing.Size(230, 26);
-            this.txtViewSubject.TabIndex = 4;
-            this.txtViewSubject.Visible = false;
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(15, 78);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(53, 20);
-            this.label20.TabIndex = 1;
-            this.label20.Text = "Class";
-            // 
-            // lblSubject
-            // 
-            this.lblSubject.AutoSize = true;
-            this.lblSubject.Location = new System.Drawing.Point(15, 37);
-            this.lblSubject.Name = "lblSubject";
-            this.lblSubject.Size = new System.Drawing.Size(70, 20);
-            this.lblSubject.TabIndex = 0;
-            this.lblSubject.Text = "Subject";
-            this.lblSubject.Visible = false;
-            // 
             // loadQuestionpane
             // 
-            this.loadQuestionpane.Controls.Add(this.textBox5);
+            this.loadQuestionpane.Controls.Add(this.txtLQid);
             this.loadQuestionpane.Controls.Add(this.label16);
             this.loadQuestionpane.Controls.Add(this.btnAdminQUpdate);
             this.loadQuestionpane.Controls.Add(this.btnAdminQDelete);
             this.loadQuestionpane.Controls.Add(this.btnAdminQSave);
-            this.loadQuestionpane.Controls.Add(this.dataGridView1);
+            this.loadQuestionpane.Controls.Add(this.loadQuestGrid);
             this.loadQuestionpane.Controls.Add(this.groupBox1);
             this.loadQuestionpane.Location = new System.Drawing.Point(0, 0);
             this.loadQuestionpane.Name = "loadQuestionpane";
@@ -494,13 +494,13 @@
             this.loadQuestionpane.TabIndex = 5;
             this.loadQuestionpane.Visible = false;
             // 
-            // textBox5
+            // txtLQid
             // 
-            this.textBox5.Location = new System.Drawing.Point(134, 275);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(50, 26);
-            this.textBox5.TabIndex = 9;
-            this.textBox5.Visible = false;
+            this.txtLQid.Location = new System.Drawing.Point(134, 275);
+            this.txtLQid.Name = "txtLQid";
+            this.txtLQid.Size = new System.Drawing.Size(50, 26);
+            this.txtLQid.TabIndex = 9;
+            this.txtLQid.Visible = false;
             // 
             // label16
             // 
@@ -552,20 +552,20 @@
             this.btnAdminQSave.UseVisualStyleBackColor = false;
             this.btnAdminQSave.Click += new System.EventHandler(this.btnAdminQSave_Click);
             // 
-            // dataGridView1
+            // loadQuestGrid
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(447, 5);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(606, 442);
-            this.dataGridView1.TabIndex = 0;
+            this.loadQuestGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.loadQuestGrid.Location = new System.Drawing.Point(447, 5);
+            this.loadQuestGrid.Name = "loadQuestGrid";
+            this.loadQuestGrid.Size = new System.Drawing.Size(606, 442);
+            this.loadQuestGrid.TabIndex = 0;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBox4);
-            this.groupBox1.Controls.Add(this.textBox3);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.txtLQmark);
+            this.groupBox1.Controls.Add(this.txtLQquestion);
+            this.groupBox1.Controls.Add(this.txtLQclass);
+            this.groupBox1.Controls.Add(this.txtLQsubject);
             this.groupBox1.Controls.Add(this.label15);
             this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.label13);
@@ -578,34 +578,34 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Questions";
             // 
-            // textBox4
+            // txtLQmark
             // 
-            this.textBox4.Location = new System.Drawing.Point(354, 78);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(50, 26);
-            this.textBox4.TabIndex = 7;
+            this.txtLQmark.Location = new System.Drawing.Point(354, 78);
+            this.txtLQmark.Name = "txtLQmark";
+            this.txtLQmark.Size = new System.Drawing.Size(50, 26);
+            this.txtLQmark.TabIndex = 7;
             // 
-            // textBox3
+            // txtLQquestion
             // 
-            this.textBox3.Location = new System.Drawing.Point(110, 116);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(294, 122);
-            this.textBox3.TabIndex = 6;
+            this.txtLQquestion.Location = new System.Drawing.Point(110, 116);
+            this.txtLQquestion.Multiline = true;
+            this.txtLQquestion.Name = "txtLQquestion";
+            this.txtLQquestion.Size = new System.Drawing.Size(294, 122);
+            this.txtLQquestion.TabIndex = 6;
             // 
-            // textBox2
+            // txtLQclass
             // 
-            this.textBox2.Location = new System.Drawing.Point(110, 75);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(188, 26);
-            this.textBox2.TabIndex = 5;
+            this.txtLQclass.Location = new System.Drawing.Point(110, 75);
+            this.txtLQclass.Name = "txtLQclass";
+            this.txtLQclass.Size = new System.Drawing.Size(188, 26);
+            this.txtLQclass.TabIndex = 5;
             // 
-            // textBox1
+            // txtLQsubject
             // 
-            this.textBox1.Location = new System.Drawing.Point(110, 34);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(294, 26);
-            this.textBox1.TabIndex = 4;
+            this.txtLQsubject.Location = new System.Drawing.Point(110, 34);
+            this.txtLQsubject.Name = "txtLQsubject";
+            this.txtLQsubject.Size = new System.Drawing.Size(294, 26);
+            this.txtLQsubject.TabIndex = 4;
             // 
             // label15
             // 
@@ -765,17 +765,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.nyscLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.enginLogo)).EndInit();
             this.contentPane.ResumeLayout(false);
-            this.registerPane.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.participantDataGride)).EndInit();
-            this.studentRegDetails.ResumeLayout(false);
-            this.studentRegDetails.PerformLayout();
             this.viewPane.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.adminViewDataGrid)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.registerPane.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.participantDataGride)).EndInit();
+            this.studentRegDetails.ResumeLayout(false);
+            this.studentRegDetails.PerformLayout();
             this.loadQuestionpane.ResumeLayout(false);
             this.loadQuestionpane.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.loadQuestGrid)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.sideBarPane.ResumeLayout(false);
@@ -824,16 +824,16 @@
         private System.Windows.Forms.Label lblPartID;
         private System.Windows.Forms.Panel loadQuestionpane;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.DataGridView loadQuestGrid;
+        private System.Windows.Forms.TextBox txtLQid;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Button btnAdminQUpdate;
         private System.Windows.Forms.Button btnAdminQDelete;
         private System.Windows.Forms.Button btnAdminQSave;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtLQmark;
+        private System.Windows.Forms.TextBox txtLQquestion;
+        private System.Windows.Forms.TextBox txtLQclass;
+        private System.Windows.Forms.TextBox txtLQsubject;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;

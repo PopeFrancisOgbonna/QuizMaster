@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -80,17 +81,69 @@ namespace QuizMaster
         {
 
         }
-
+        //code load questions into database
         private void btnAdminQSave_Click(object sender, EventArgs e)
         {
+            string query = "insert into Question values(@param,@param1,@param2,@param3)";
 
+            
+            
+                int Subject_Id = 0;
+                int class_Id = 0;
+                switch (txtLQsubject.Text.Trim().ToLower())//Gets the correct subject id
+                {
+                    case "english": case "english language":
+                        Subject_Id = 1;
+                        break;
+                    case "maths": case "mathematics":
+                        Subject_Id = 2;
+                        break;
+                }
+                switch (txtLQclass.Text.Trim().ToLower())//Gets the correct class id for question being uploaded
+                {
+                    case "primary 1":
+                        class_Id = 1;
+                        break;
+                    case "primary 2":
+                        class_Id = 2;
+                        break;
+                    case "primary 3":
+                        class_Id = 3;
+                        break;
+                    case "primary 4":
+                        class_Id = 4;
+                        break;
+                    case "primary 5":
+                        class_Id = 5;
+                        break;
+                    case "primary 6":
+                        class_Id = 6;
+                        break;
+                }
+            //database query for inserting questions 
+                SqlCommand command = new SqlCommand(query, con.connect);
+                command.Parameters.AddWithValue("@param",Subject_Id);
+                command.Parameters.AddWithValue("@param1",txtLQquestion.Text.Trim());
+                command.Parameters.AddWithValue("@param2",class_Id);
+                command.Parameters.AddWithValue("@param3",txtLQmark.Text.Trim());
+                con.connect.Open();
+                int i = command.ExecuteNonQuery();
+                if (i > 0)
+                {
+                    MessageBox.Show("Question Uploaded successfully","Success",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Error occured! Question not loaded", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                con.connect.Close();    
         }
         //load Question end
         private void btnAdminView_Click(object sender, EventArgs e)
         {
-            con.tbl.Clear();
+            con.tbl.Clear();//clears the data table 
            adminViewDataGrid.Refresh();
-            con.viewStudent(txtViewClass.Text.Trim().ToLower());
+            con.viewStudent(txtViewClass.Text.Trim().ToLower());//Invoke view student method
             adminViewDataGrid.DataSource = con.tbl;
         }
 
@@ -115,7 +168,7 @@ namespace QuizMaster
 
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void timer1_Tick(object sender, EventArgs e)//display current time
         {
             lblQDate.Text = DateTime.Now.ToLongDateString();
             lblQTime.Text = DateTime.Now.ToLongTimeString();
