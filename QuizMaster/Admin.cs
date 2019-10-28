@@ -57,6 +57,8 @@ namespace QuizMaster
             viewPane.Visible = true;
             lblSubject.Visible = false;
             txtViewSubject.Visible = false;
+            txtViewClass.Clear();
+            if (adminViewDataGrid.Visible) { adminViewDataGrid.Visible = false; }
         }
 
         private void btnAdminViewQuest_Click(object sender, EventArgs e)
@@ -69,7 +71,9 @@ namespace QuizMaster
             loadQuestionpane.Visible = false;
             viewPane.Visible = true;
             lblSubject.Visible = true;
+            txtViewClass.Text = "";
             txtViewSubject.Visible = true;
+            if (adminviewStudentGrid.Visible) { adminviewStudentGrid.Visible = false; }
         }
         Database_Connectivity con = new Database_Connectivity();
         private void btnAdminQUpdate_Click(object sender, EventArgs e)
@@ -141,16 +145,57 @@ namespace QuizMaster
         //load Question end
         private void btnAdminView_Click(object sender, EventArgs e)
         {
-            con.tbl.Clear();//clears the data table 
-           adminViewDataGrid.Refresh();
-            con.viewStudent(txtViewClass.Text.Trim().ToLower());//Invoke view student method
-            adminViewDataGrid.DataSource = con.tbl;
+            if (txtViewClass.Text != "" && txtViewSubject.Text != "")
+            {
+               con.tblclassquest.Clear();//clears the data table 
+                adminViewDataGrid.Refresh();
+                con.viewClassquestions(txtViewClass.Text.Trim().ToLower(),txtViewSubject.Text.Trim().ToLower());
+                adminViewDataGrid.DataSource = con.tblclassquest;
+                adminviewStudentGrid.Visible = false;
+                adminViewDataGrid.Visible = true;
+            }
+            //if (txtViewClass.Text == "")
+            //{
+            //    con.tbl.Clear();//clears the data table 
+            //    adminViewDataGrid.Refresh();
+            //    con.viewQuestions();
+            //    adminViewDataGrid.DataSource = con.tbl;
+            //    adminviewStudentGrid.Visible = false;
+            //}
+            else
+            {
+                con.tblviewStudent.Clear();//clears the data table 
+                adminviewStudentGrid.Refresh();
+                con.viewStudent(txtViewClass.Text.Trim().ToLower());//Invoke view student method
+                adminviewStudentGrid.DataSource = con.tblviewStudent;
+
+                adminviewStudentGrid.Visible = true;
+
+            }
+
         }
 
         private void btnAdminViewAll_Click(object sender, EventArgs e)
         {
-            con.viewQuestions();
-            adminViewDataGrid.DataSource = con.tbl;
+            if (txtViewSubject.Visible == false)//gets all Students irrespective of class
+            {
+               con.tblParticipant.Clear();//clears the data table 
+                adminviewStudentGrid.Refresh();
+                con.viewParticipants();
+                adminviewStudentGrid.DataSource = con.tblParticipant;
+
+                adminviewStudentGrid.Visible = true;
+            }
+            if (txtViewSubject.Visible)//Gets all questions from the database irrespective of class
+            {
+                con.tblviewQuest.Clear();//clears the data table 
+                adminViewDataGrid.Refresh();
+                con.viewQuestions();
+                adminViewDataGrid.DataSource = con.tblviewQuest;
+                adminViewDataGrid.Visible = true;
+                adminviewStudentGrid.Visible = false;
+            }
+            
         }
         //View Participants and questions end
         private void btnAddParticipant_Click(object sender, EventArgs e)

@@ -35,50 +35,40 @@ namespace QuizMaster
             }
         }
 
-        public DataTable tbl = new DataTable();
+        public DataTable tblviewQuest = new DataTable();
+        public DataTable tblclassquest = new DataTable();
+        public DataTable tblviewStudent = new DataTable();
+            public DataTable tblParticipant = new DataTable();
         public void viewQuestions()//view all question 
         {
-            string query = "select Question.Quest_Id as 'Question Number',Subject.Subject_Id as 'Subject',Questions as 'Question',Class.Class_Id as'Class' from Question, Class, Subject";
+            string query = "select q.Quest_Id as 'Question Number',q.Questions as 'Question',s.Name as 'Subject',c.ClassName as'Class' from Question q, Class c, Subject s where q.Class_Id = c.Class_Id and q.Subject_Id = s.Subject_Id; ";
             SqlCommand command = new SqlCommand(query, connect);
             SqlDataAdapter adapt = new SqlDataAdapter(command);
-            adapt.Fill(tbl);
+            adapt.Fill(tblviewQuest);
+        }
+        public void viewClassquestions(string klass,string subject)
+        {
+            string query = "select q.Quest_Id as 'Question Number',q.Questions as 'Question',s.Name as 'Subject',c.ClassName as'Class' from Question q, Class c, Subject s where q.Class_Id = c.Class_Id and q.Subject_Id = s.Subject_Id and c.ClassName=@param and s.Name=@param1; ";
+            SqlCommand command = new SqlCommand(query, connect);
+            command.Parameters.AddWithValue("@param", klass);
+            command.Parameters.AddWithValue("@param1", subject);
+            SqlDataAdapter adapt = new SqlDataAdapter(command);
+            adapt.Fill(tblclassquest);
         }
         public void viewStudent(string klass) // view student from a specific class
         {
-            int id = 0;
-            switch (klass)
-            {
-                case "primary 1":
-                    id = 1;
-                    break;
-                case "primary 2":
-                    id = 2;
-                    break;
-                case "primary 3":
-                    id = 3;
-                    break;
-                case "primary 4":
-                    id = 4;
-                    break;
-                case "primary 5":
-                    id = 5;
-                    break;
-                case "primary 6":
-                    id = 6;
-                    break;
-            }
-            string query = "select concat(FName,' ',LName) as 'Name',ClassName as'Class', GroupName as 'Group',Instructor as 'Class Teacher' from Student s,Class c,Groups g where s.Class_Id=@param and s.Class_Id=c.Class_Id  and s.Group_Id=g.Group_Id;";
+            string query = "select concat(FName,' ',LName) as 'Name',ClassName as'Class', GroupName as 'Group',Instructor as 'Class Teacher' from Student s,Class c,Groups g where c.ClassName=@param and s.Class_Id=c.Class_Id  and s.Group_Id=g.Group_Id;";
             SqlCommand command = new SqlCommand(query, connect);
-            command.Parameters.AddWithValue("@param", id);
+            command.Parameters.AddWithValue("@param",klass);
             SqlDataAdapter adapt = new SqlDataAdapter(command);
-            adapt.Fill(tbl);
+            adapt.Fill(tblviewStudent);
         }
         public void viewParticipants()//shows all participants 
         {
             string query = "select concat(Student.FName, ' ', Student.LName) as 'Name', Class.ClassName as 'Class',Groups.GroupName as 'Group',Groups.Instructor as 'Class Teacher' from Student, Class, Groups where Class.Class_Id = Student.Class_Id and Student.Group_Id = Groups.Group_Id;";
             SqlCommand command = new SqlCommand(query, connect);
             SqlDataAdapter adapt = new SqlDataAdapter(command);
-            adapt.Fill(tbl);
+            adapt.Fill(tblParticipant);
         }
     }
 }

@@ -66,7 +66,7 @@ namespace QuizMaster
         {
             
             connection.viewParticipants();
-            participantGrid.DataSource = connection.tbl;
+            participantGrid.DataSource = connection.tblParticipant;
            
         }
 
@@ -85,8 +85,8 @@ namespace QuizMaster
 
         private void btnParticipant_Click(object sender, EventArgs e)
         {
-            connection.tbl.Clear();
-            participantGrid.DataSource = connection.tbl;
+            connection.tblParticipant.Clear();
+            participantGrid.DataSource = connection.tblParticipant;
             participantPane.Visible = true;
             fillgrid();
         }

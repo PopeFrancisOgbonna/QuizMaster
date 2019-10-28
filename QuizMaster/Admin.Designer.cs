@@ -38,6 +38,22 @@
             this.enginLogo = new System.Windows.Forms.PictureBox();
             this.btnStart = new System.Windows.Forms.Button();
             this.contentPane = new System.Windows.Forms.Panel();
+            this.loadQuestionpane = new System.Windows.Forms.Panel();
+            this.txtLQid = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.btnAdminQUpdate = new System.Windows.Forms.Button();
+            this.btnAdminQDelete = new System.Windows.Forms.Button();
+            this.btnAdminQSave = new System.Windows.Forms.Button();
+            this.loadQuestGrid = new System.Windows.Forms.DataGridView();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtLQmark = new System.Windows.Forms.TextBox();
+            this.txtLQquestion = new System.Windows.Forms.TextBox();
+            this.txtLQclass = new System.Windows.Forms.TextBox();
+            this.txtLQsubject = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.viewPane = new System.Windows.Forms.Panel();
             this.btnAdminViewAll = new System.Windows.Forms.Button();
             this.btnAdminView = new System.Windows.Forms.Button();
@@ -65,22 +81,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.loadQuestionpane = new System.Windows.Forms.Panel();
-            this.txtLQid = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.btnAdminQUpdate = new System.Windows.Forms.Button();
-            this.btnAdminQDelete = new System.Windows.Forms.Button();
-            this.btnAdminQSave = new System.Windows.Forms.Button();
-            this.loadQuestGrid = new System.Windows.Forms.DataGridView();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtLQmark = new System.Windows.Forms.TextBox();
-            this.txtLQquestion = new System.Windows.Forms.TextBox();
-            this.txtLQclass = new System.Windows.Forms.TextBox();
-            this.txtLQsubject = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
             this.sideBarPane = new System.Windows.Forms.Panel();
             this.scrollPane = new System.Windows.Forms.Panel();
             this.btnAdminLoadQuest = new System.Windows.Forms.Button();
@@ -91,22 +91,24 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.adminviewStudentGrid = new System.Windows.Forms.DataGridView();
             this.quizMasterTabControl.SuspendLayout();
             this.quizTabButton.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nyscLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.enginLogo)).BeginInit();
             this.contentPane.SuspendLayout();
+            this.loadQuestionpane.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.loadQuestGrid)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.viewPane.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.adminViewDataGrid)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.registerPane.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.participantDataGride)).BeginInit();
             this.studentRegDetails.SuspendLayout();
-            this.loadQuestionpane.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.loadQuestGrid)).BeginInit();
-            this.groupBox1.SuspendLayout();
             this.sideBarPane.SuspendLayout();
             this.quizHeaderPane.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.adminviewStudentGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // quizMasterTabControl
@@ -197,16 +199,181 @@
             // contentPane
             // 
             this.contentPane.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.contentPane.Controls.Add(this.loadQuestionpane);
             this.contentPane.Controls.Add(this.viewPane);
+            this.contentPane.Controls.Add(this.loadQuestionpane);
             this.contentPane.Controls.Add(this.registerPane);
             this.contentPane.Location = new System.Drawing.Point(153, 157);
             this.contentPane.Name = "contentPane";
             this.contentPane.Size = new System.Drawing.Size(1060, 453);
             this.contentPane.TabIndex = 2;
             // 
+            // loadQuestionpane
+            // 
+            this.loadQuestionpane.Controls.Add(this.txtLQid);
+            this.loadQuestionpane.Controls.Add(this.label16);
+            this.loadQuestionpane.Controls.Add(this.btnAdminQUpdate);
+            this.loadQuestionpane.Controls.Add(this.btnAdminQDelete);
+            this.loadQuestionpane.Controls.Add(this.btnAdminQSave);
+            this.loadQuestionpane.Controls.Add(this.loadQuestGrid);
+            this.loadQuestionpane.Controls.Add(this.groupBox1);
+            this.loadQuestionpane.Location = new System.Drawing.Point(0, 0);
+            this.loadQuestionpane.Name = "loadQuestionpane";
+            this.loadQuestionpane.Size = new System.Drawing.Size(1059, 453);
+            this.loadQuestionpane.TabIndex = 5;
+            this.loadQuestionpane.Visible = false;
+            // 
+            // txtLQid
+            // 
+            this.txtLQid.Location = new System.Drawing.Point(134, 275);
+            this.txtLQid.Name = "txtLQid";
+            this.txtLQid.Size = new System.Drawing.Size(50, 26);
+            this.txtLQid.TabIndex = 9;
+            this.txtLQid.Visible = false;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.ForeColor = System.Drawing.Color.White;
+            this.label16.Location = new System.Drawing.Point(23, 278);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(105, 20);
+            this.label16.TabIndex = 8;
+            this.label16.Text = "Question ID";
+            this.label16.Visible = false;
+            // 
+            // btnAdminQUpdate
+            // 
+            this.btnAdminQUpdate.BackColor = System.Drawing.Color.MediumTurquoise;
+            this.btnAdminQUpdate.Font = new System.Drawing.Font("Modern No. 20", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdminQUpdate.ForeColor = System.Drawing.Color.White;
+            this.btnAdminQUpdate.Location = new System.Drawing.Point(200, 321);
+            this.btnAdminQUpdate.Name = "btnAdminQUpdate";
+            this.btnAdminQUpdate.Size = new System.Drawing.Size(106, 37);
+            this.btnAdminQUpdate.TabIndex = 3;
+            this.btnAdminQUpdate.Text = "Update";
+            this.btnAdminQUpdate.UseVisualStyleBackColor = false;
+            this.btnAdminQUpdate.Click += new System.EventHandler(this.btnAdminQUpdate_Click);
+            // 
+            // btnAdminQDelete
+            // 
+            this.btnAdminQDelete.BackColor = System.Drawing.Color.Crimson;
+            this.btnAdminQDelete.Font = new System.Drawing.Font("Modern No. 20", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdminQDelete.ForeColor = System.Drawing.Color.White;
+            this.btnAdminQDelete.Location = new System.Drawing.Point(314, 321);
+            this.btnAdminQDelete.Name = "btnAdminQDelete";
+            this.btnAdminQDelete.Size = new System.Drawing.Size(94, 37);
+            this.btnAdminQDelete.TabIndex = 2;
+            this.btnAdminQDelete.Text = "Delete";
+            this.btnAdminQDelete.UseVisualStyleBackColor = false;
+            this.btnAdminQDelete.Click += new System.EventHandler(this.btnAdminQDelete_Click);
+            // 
+            // btnAdminQSave
+            // 
+            this.btnAdminQSave.BackColor = System.Drawing.Color.ForestGreen;
+            this.btnAdminQSave.Font = new System.Drawing.Font("Modern No. 20", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdminQSave.ForeColor = System.Drawing.Color.White;
+            this.btnAdminQSave.Location = new System.Drawing.Point(90, 321);
+            this.btnAdminQSave.Name = "btnAdminQSave";
+            this.btnAdminQSave.Size = new System.Drawing.Size(94, 37);
+            this.btnAdminQSave.TabIndex = 1;
+            this.btnAdminQSave.Text = "Save";
+            this.btnAdminQSave.UseVisualStyleBackColor = false;
+            this.btnAdminQSave.Click += new System.EventHandler(this.btnAdminQSave_Click);
+            // 
+            // loadQuestGrid
+            // 
+            this.loadQuestGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.loadQuestGrid.Location = new System.Drawing.Point(447, 5);
+            this.loadQuestGrid.Name = "loadQuestGrid";
+            this.loadQuestGrid.Size = new System.Drawing.Size(606, 442);
+            this.loadQuestGrid.TabIndex = 0;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.txtLQmark);
+            this.groupBox1.Controls.Add(this.txtLQquestion);
+            this.groupBox1.Controls.Add(this.txtLQclass);
+            this.groupBox1.Controls.Add(this.txtLQsubject);
+            this.groupBox1.Controls.Add(this.label15);
+            this.groupBox1.Controls.Add(this.label14);
+            this.groupBox1.Controls.Add(this.label13);
+            this.groupBox1.Controls.Add(this.label12);
+            this.groupBox1.ForeColor = System.Drawing.Color.White;
+            this.groupBox1.Location = new System.Drawing.Point(24, 27);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(417, 244);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Questions";
+            // 
+            // txtLQmark
+            // 
+            this.txtLQmark.Location = new System.Drawing.Point(354, 78);
+            this.txtLQmark.Name = "txtLQmark";
+            this.txtLQmark.Size = new System.Drawing.Size(50, 26);
+            this.txtLQmark.TabIndex = 7;
+            // 
+            // txtLQquestion
+            // 
+            this.txtLQquestion.Location = new System.Drawing.Point(110, 116);
+            this.txtLQquestion.Multiline = true;
+            this.txtLQquestion.Name = "txtLQquestion";
+            this.txtLQquestion.Size = new System.Drawing.Size(294, 122);
+            this.txtLQquestion.TabIndex = 6;
+            // 
+            // txtLQclass
+            // 
+            this.txtLQclass.Location = new System.Drawing.Point(110, 75);
+            this.txtLQclass.Name = "txtLQclass";
+            this.txtLQclass.Size = new System.Drawing.Size(188, 26);
+            this.txtLQclass.TabIndex = 5;
+            // 
+            // txtLQsubject
+            // 
+            this.txtLQsubject.Location = new System.Drawing.Point(110, 34);
+            this.txtLQsubject.Name = "txtLQsubject";
+            this.txtLQsubject.Size = new System.Drawing.Size(294, 26);
+            this.txtLQsubject.TabIndex = 4;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(300, 81);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(48, 20);
+            this.label15.TabIndex = 3;
+            this.label15.Text = "Mark";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(15, 119);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(81, 20);
+            this.label14.TabIndex = 2;
+            this.label14.Text = "Question";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(15, 78);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(53, 20);
+            this.label13.TabIndex = 1;
+            this.label13.Text = "Class";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(15, 37);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(70, 20);
+            this.label12.TabIndex = 0;
+            this.label12.Text = "Subject";
+            // 
             // viewPane
             // 
+            this.viewPane.Controls.Add(this.adminviewStudentGrid);
             this.viewPane.Controls.Add(this.btnAdminViewAll);
             this.viewPane.Controls.Add(this.btnAdminView);
             this.viewPane.Controls.Add(this.adminViewDataGrid);
@@ -246,7 +413,7 @@
             // adminViewDataGrid
             // 
             this.adminViewDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.adminViewDataGrid.Location = new System.Drawing.Point(380, 5);
+            this.adminViewDataGrid.Location = new System.Drawing.Point(384, 2);
             this.adminViewDataGrid.Name = "adminViewDataGrid";
             this.adminViewDataGrid.Size = new System.Drawing.Size(673, 442);
             this.adminViewDataGrid.TabIndex = 0;
@@ -479,170 +646,6 @@
             this.label6.TabIndex = 0;
             this.label6.Text = "First Name";
             // 
-            // loadQuestionpane
-            // 
-            this.loadQuestionpane.Controls.Add(this.txtLQid);
-            this.loadQuestionpane.Controls.Add(this.label16);
-            this.loadQuestionpane.Controls.Add(this.btnAdminQUpdate);
-            this.loadQuestionpane.Controls.Add(this.btnAdminQDelete);
-            this.loadQuestionpane.Controls.Add(this.btnAdminQSave);
-            this.loadQuestionpane.Controls.Add(this.loadQuestGrid);
-            this.loadQuestionpane.Controls.Add(this.groupBox1);
-            this.loadQuestionpane.Location = new System.Drawing.Point(0, 0);
-            this.loadQuestionpane.Name = "loadQuestionpane";
-            this.loadQuestionpane.Size = new System.Drawing.Size(1059, 453);
-            this.loadQuestionpane.TabIndex = 5;
-            this.loadQuestionpane.Visible = false;
-            // 
-            // txtLQid
-            // 
-            this.txtLQid.Location = new System.Drawing.Point(134, 275);
-            this.txtLQid.Name = "txtLQid";
-            this.txtLQid.Size = new System.Drawing.Size(50, 26);
-            this.txtLQid.TabIndex = 9;
-            this.txtLQid.Visible = false;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.ForeColor = System.Drawing.Color.White;
-            this.label16.Location = new System.Drawing.Point(23, 278);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(105, 20);
-            this.label16.TabIndex = 8;
-            this.label16.Text = "Question ID";
-            this.label16.Visible = false;
-            // 
-            // btnAdminQUpdate
-            // 
-            this.btnAdminQUpdate.BackColor = System.Drawing.Color.MediumTurquoise;
-            this.btnAdminQUpdate.Font = new System.Drawing.Font("Modern No. 20", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdminQUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnAdminQUpdate.Location = new System.Drawing.Point(200, 321);
-            this.btnAdminQUpdate.Name = "btnAdminQUpdate";
-            this.btnAdminQUpdate.Size = new System.Drawing.Size(106, 37);
-            this.btnAdminQUpdate.TabIndex = 3;
-            this.btnAdminQUpdate.Text = "Update";
-            this.btnAdminQUpdate.UseVisualStyleBackColor = false;
-            this.btnAdminQUpdate.Click += new System.EventHandler(this.btnAdminQUpdate_Click);
-            // 
-            // btnAdminQDelete
-            // 
-            this.btnAdminQDelete.BackColor = System.Drawing.Color.Crimson;
-            this.btnAdminQDelete.Font = new System.Drawing.Font("Modern No. 20", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdminQDelete.ForeColor = System.Drawing.Color.White;
-            this.btnAdminQDelete.Location = new System.Drawing.Point(314, 321);
-            this.btnAdminQDelete.Name = "btnAdminQDelete";
-            this.btnAdminQDelete.Size = new System.Drawing.Size(94, 37);
-            this.btnAdminQDelete.TabIndex = 2;
-            this.btnAdminQDelete.Text = "Delete";
-            this.btnAdminQDelete.UseVisualStyleBackColor = false;
-            this.btnAdminQDelete.Click += new System.EventHandler(this.btnAdminQDelete_Click);
-            // 
-            // btnAdminQSave
-            // 
-            this.btnAdminQSave.BackColor = System.Drawing.Color.ForestGreen;
-            this.btnAdminQSave.Font = new System.Drawing.Font("Modern No. 20", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdminQSave.ForeColor = System.Drawing.Color.White;
-            this.btnAdminQSave.Location = new System.Drawing.Point(90, 321);
-            this.btnAdminQSave.Name = "btnAdminQSave";
-            this.btnAdminQSave.Size = new System.Drawing.Size(94, 37);
-            this.btnAdminQSave.TabIndex = 1;
-            this.btnAdminQSave.Text = "Save";
-            this.btnAdminQSave.UseVisualStyleBackColor = false;
-            this.btnAdminQSave.Click += new System.EventHandler(this.btnAdminQSave_Click);
-            // 
-            // loadQuestGrid
-            // 
-            this.loadQuestGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.loadQuestGrid.Location = new System.Drawing.Point(447, 5);
-            this.loadQuestGrid.Name = "loadQuestGrid";
-            this.loadQuestGrid.Size = new System.Drawing.Size(606, 442);
-            this.loadQuestGrid.TabIndex = 0;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.txtLQmark);
-            this.groupBox1.Controls.Add(this.txtLQquestion);
-            this.groupBox1.Controls.Add(this.txtLQclass);
-            this.groupBox1.Controls.Add(this.txtLQsubject);
-            this.groupBox1.Controls.Add(this.label15);
-            this.groupBox1.Controls.Add(this.label14);
-            this.groupBox1.Controls.Add(this.label13);
-            this.groupBox1.Controls.Add(this.label12);
-            this.groupBox1.ForeColor = System.Drawing.Color.White;
-            this.groupBox1.Location = new System.Drawing.Point(24, 27);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(417, 244);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Questions";
-            // 
-            // txtLQmark
-            // 
-            this.txtLQmark.Location = new System.Drawing.Point(354, 78);
-            this.txtLQmark.Name = "txtLQmark";
-            this.txtLQmark.Size = new System.Drawing.Size(50, 26);
-            this.txtLQmark.TabIndex = 7;
-            // 
-            // txtLQquestion
-            // 
-            this.txtLQquestion.Location = new System.Drawing.Point(110, 116);
-            this.txtLQquestion.Multiline = true;
-            this.txtLQquestion.Name = "txtLQquestion";
-            this.txtLQquestion.Size = new System.Drawing.Size(294, 122);
-            this.txtLQquestion.TabIndex = 6;
-            // 
-            // txtLQclass
-            // 
-            this.txtLQclass.Location = new System.Drawing.Point(110, 75);
-            this.txtLQclass.Name = "txtLQclass";
-            this.txtLQclass.Size = new System.Drawing.Size(188, 26);
-            this.txtLQclass.TabIndex = 5;
-            // 
-            // txtLQsubject
-            // 
-            this.txtLQsubject.Location = new System.Drawing.Point(110, 34);
-            this.txtLQsubject.Name = "txtLQsubject";
-            this.txtLQsubject.Size = new System.Drawing.Size(294, 26);
-            this.txtLQsubject.TabIndex = 4;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(300, 81);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(48, 20);
-            this.label15.TabIndex = 3;
-            this.label15.Text = "Mark";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(15, 119);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(81, 20);
-            this.label14.TabIndex = 2;
-            this.label14.Text = "Question";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(15, 78);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(53, 20);
-            this.label13.TabIndex = 1;
-            this.label13.Text = "Class";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(15, 37);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(70, 20);
-            this.label12.TabIndex = 0;
-            this.label12.Text = "Subject";
-            // 
             // sideBarPane
             // 
             this.sideBarPane.BackColor = System.Drawing.SystemColors.ScrollBar;
@@ -749,6 +752,15 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // adminviewStudentGrid
+            // 
+            this.adminviewStudentGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.adminviewStudentGrid.Location = new System.Drawing.Point(382, 3);
+            this.adminviewStudentGrid.Name = "adminviewStudentGrid";
+            this.adminviewStudentGrid.Size = new System.Drawing.Size(674, 442);
+            this.adminviewStudentGrid.TabIndex = 10;
+            this.adminviewStudentGrid.Visible = false;
+            // 
             // Admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -765,6 +777,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.nyscLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.enginLogo)).EndInit();
             this.contentPane.ResumeLayout(false);
+            this.loadQuestionpane.ResumeLayout(false);
+            this.loadQuestionpane.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.loadQuestGrid)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.viewPane.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.adminViewDataGrid)).EndInit();
             this.groupBox2.ResumeLayout(false);
@@ -773,14 +790,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.participantDataGride)).EndInit();
             this.studentRegDetails.ResumeLayout(false);
             this.studentRegDetails.PerformLayout();
-            this.loadQuestionpane.ResumeLayout(false);
-            this.loadQuestionpane.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.loadQuestGrid)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.sideBarPane.ResumeLayout(false);
             this.quizHeaderPane.ResumeLayout(false);
             this.quizHeaderPane.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.adminviewStudentGrid)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -848,5 +861,6 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label lblSubject;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.DataGridView adminviewStudentGrid;
     }
 }
