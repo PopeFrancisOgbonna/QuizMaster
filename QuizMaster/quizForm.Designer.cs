@@ -37,10 +37,11 @@
             this.btnQFback = new System.Windows.Forms.Button();
             this.contentPane = new System.Windows.Forms.Panel();
             this.takeQuizPane = new System.Windows.Forms.Panel();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.btnTQSubmit = new System.Windows.Forms.Button();
             this.btnTQrepeat = new System.Windows.Forms.Button();
             this.txtTQanswer = new System.Windows.Forms.TextBox();
             this.tqQuestionPane = new System.Windows.Forms.Panel();
-            this.btnTQSubmit = new System.Windows.Forms.Button();
             this.button34 = new System.Windows.Forms.Button();
             this.button28 = new System.Windows.Forms.Button();
             this.button22 = new System.Windows.Forms.Button();
@@ -205,6 +206,7 @@
             // takeQuizPane
             // 
             this.takeQuizPane.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(107)))), ((int)(((byte)(186)))));
+            this.takeQuizPane.Controls.Add(this.comboBox1);
             this.takeQuizPane.Controls.Add(this.btnTQSubmit);
             this.takeQuizPane.Controls.Add(this.btnTQrepeat);
             this.takeQuizPane.Controls.Add(this.txtTQanswer);
@@ -218,22 +220,48 @@
             this.takeQuizPane.TabIndex = 2;
             this.takeQuizPane.Visible = false;
             // 
+            // comboBox1
+            // 
+            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(675, 9);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(240, 33);
+            this.comboBox1.TabIndex = 9;
+            this.comboBox1.Text = "Choose Subject";
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // btnTQSubmit
+            // 
+            this.btnTQSubmit.BackColor = System.Drawing.Color.DarkGreen;
+            this.btnTQSubmit.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTQSubmit.ForeColor = System.Drawing.Color.White;
+            this.btnTQSubmit.Location = new System.Drawing.Point(660, 401);
+            this.btnTQSubmit.Name = "btnTQSubmit";
+            this.btnTQSubmit.Size = new System.Drawing.Size(102, 43);
+            this.btnTQSubmit.TabIndex = 7;
+            this.btnTQSubmit.Text = "Submit";
+            this.btnTQSubmit.UseVisualStyleBackColor = false;
+            this.btnTQSubmit.Visible = false;
+            this.btnTQSubmit.Click += new System.EventHandler(this.btnTQSubmit_Click);
+            // 
             // btnTQrepeat
             // 
             this.btnTQrepeat.BackColor = System.Drawing.Color.MediumAquamarine;
             this.btnTQrepeat.Font = new System.Drawing.Font("Modern No. 20", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTQrepeat.ForeColor = System.Drawing.Color.White;
-            this.btnTQrepeat.Location = new System.Drawing.Point(778, 365);
+            this.btnTQrepeat.Location = new System.Drawing.Point(782, 403);
             this.btnTQrepeat.Name = "btnTQrepeat";
             this.btnTQrepeat.Size = new System.Drawing.Size(211, 41);
             this.btnTQrepeat.TabIndex = 4;
             this.btnTQrepeat.Text = "Repeat Question";
             this.btnTQrepeat.UseVisualStyleBackColor = false;
+            this.btnTQrepeat.Click += new System.EventHandler(this.btnTQrepeat_Click);
             // 
             // txtTQanswer
             // 
             this.txtTQanswer.Font = new System.Drawing.Font("Modern No. 20", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTQanswer.Location = new System.Drawing.Point(550, 136);
+            this.txtTQanswer.Location = new System.Drawing.Point(553, 177);
             this.txtTQanswer.Multiline = true;
             this.txtTQanswer.Name = "txtTQanswer";
             this.txtTQanswer.Size = new System.Drawing.Size(481, 86);
@@ -273,24 +301,11 @@
             this.tqQuestionPane.Controls.Add(this.button9);
             this.tqQuestionPane.Controls.Add(this.button6);
             this.tqQuestionPane.Controls.Add(this.button5);
-            this.tqQuestionPane.Location = new System.Drawing.Point(571, 13);
+            this.tqQuestionPane.Enabled = false;
+            this.tqQuestionPane.Location = new System.Drawing.Point(575, 54);
             this.tqQuestionPane.Name = "tqQuestionPane";
             this.tqQuestionPane.Size = new System.Drawing.Size(441, 336);
             this.tqQuestionPane.TabIndex = 3;
-            // 
-            // btnTQSubmit
-            // 
-            this.btnTQSubmit.BackColor = System.Drawing.Color.DarkGreen;
-            this.btnTQSubmit.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTQSubmit.ForeColor = System.Drawing.Color.White;
-            this.btnTQSubmit.Location = new System.Drawing.Point(656, 363);
-            this.btnTQSubmit.Name = "btnTQSubmit";
-            this.btnTQSubmit.Size = new System.Drawing.Size(102, 43);
-            this.btnTQSubmit.TabIndex = 7;
-            this.btnTQSubmit.Text = "Submit";
-            this.btnTQSubmit.UseVisualStyleBackColor = false;
-            this.btnTQSubmit.Visible = false;
-            this.btnTQSubmit.Click += new System.EventHandler(this.btnTQSubmit_Click);
             // 
             // button34
             // 
@@ -303,6 +318,7 @@
             this.button34.TabIndex = 6;
             this.button34.Text = "17";
             this.button34.UseVisualStyleBackColor = false;
+            this.button34.Click += new System.EventHandler(this.questNumbers);
             // 
             // button28
             // 
@@ -315,6 +331,7 @@
             this.button28.TabIndex = 6;
             this.button28.Text = "29";
             this.button28.UseVisualStyleBackColor = false;
+            this.button28.Click += new System.EventHandler(this.questNumbers);
             // 
             // button22
             // 
@@ -327,6 +344,7 @@
             this.button22.TabIndex = 6;
             this.button22.Text = "23";
             this.button22.UseVisualStyleBackColor = false;
+            this.button22.Click += new System.EventHandler(this.questNumbers);
             // 
             // button16
             // 
@@ -339,6 +357,7 @@
             this.button16.TabIndex = 6;
             this.button16.Text = "11";
             this.button16.UseVisualStyleBackColor = false;
+            this.button16.Click += new System.EventHandler(this.questNumbers);
             // 
             // button11
             // 
@@ -351,6 +370,7 @@
             this.button11.TabIndex = 6;
             this.button11.Text = "5";
             this.button11.UseVisualStyleBackColor = false;
+            this.button11.Click += new System.EventHandler(this.questNumbers);
             // 
             // button33
             // 
@@ -363,6 +383,7 @@
             this.button33.TabIndex = 5;
             this.button33.Text = "18";
             this.button33.UseVisualStyleBackColor = false;
+            this.button33.Click += new System.EventHandler(this.questNumbers);
             // 
             // button27
             // 
@@ -375,6 +396,7 @@
             this.button27.TabIndex = 5;
             this.button27.Text = "30";
             this.button27.UseVisualStyleBackColor = false;
+            this.button27.Click += new System.EventHandler(this.questNumbers);
             // 
             // button21
             // 
@@ -387,6 +409,7 @@
             this.button21.TabIndex = 5;
             this.button21.Text = "24";
             this.button21.UseVisualStyleBackColor = false;
+            this.button21.Click += new System.EventHandler(this.questNumbers);
             // 
             // button15
             // 
@@ -399,6 +422,7 @@
             this.button15.TabIndex = 5;
             this.button15.Text = "12";
             this.button15.UseVisualStyleBackColor = false;
+            this.button15.Click += new System.EventHandler(this.questNumbers);
             // 
             // button10
             // 
@@ -411,6 +435,7 @@
             this.button10.TabIndex = 5;
             this.button10.Text = "6";
             this.button10.UseVisualStyleBackColor = false;
+            this.button10.Click += new System.EventHandler(this.questNumbers);
             // 
             // button32
             // 
@@ -423,6 +448,7 @@
             this.button32.TabIndex = 3;
             this.button32.Text = "14";
             this.button32.UseVisualStyleBackColor = false;
+            this.button32.Click += new System.EventHandler(this.questNumbers);
             // 
             // button26
             // 
@@ -435,6 +461,7 @@
             this.button26.TabIndex = 3;
             this.button26.Text = "26";
             this.button26.UseVisualStyleBackColor = false;
+            this.button26.Click += new System.EventHandler(this.questNumbers);
             // 
             // button20
             // 
@@ -447,6 +474,7 @@
             this.button20.TabIndex = 3;
             this.button20.Text = "20";
             this.button20.UseVisualStyleBackColor = false;
+            this.button20.Click += new System.EventHandler(this.questNumbers);
             // 
             // button14
             // 
@@ -459,6 +487,7 @@
             this.button14.TabIndex = 3;
             this.button14.Text = "8";
             this.button14.UseVisualStyleBackColor = false;
+            this.button14.Click += new System.EventHandler(this.questNumbers);
             // 
             // button8
             // 
@@ -471,6 +500,7 @@
             this.button8.TabIndex = 3;
             this.button8.Text = "2";
             this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.questNumbers);
             // 
             // button31
             // 
@@ -483,6 +513,7 @@
             this.button31.TabIndex = 2;
             this.button31.Text = "15";
             this.button31.UseVisualStyleBackColor = false;
+            this.button31.Click += new System.EventHandler(this.questNumbers);
             // 
             // button30
             // 
@@ -495,6 +526,7 @@
             this.button30.TabIndex = 1;
             this.button30.Text = "16";
             this.button30.UseVisualStyleBackColor = false;
+            this.button30.Click += new System.EventHandler(this.questNumbers);
             // 
             // button25
             // 
@@ -507,6 +539,7 @@
             this.button25.TabIndex = 2;
             this.button25.Text = "27";
             this.button25.UseVisualStyleBackColor = false;
+            this.button25.Click += new System.EventHandler(this.questNumbers);
             // 
             // button24
             // 
@@ -519,6 +552,7 @@
             this.button24.TabIndex = 1;
             this.button24.Text = "28";
             this.button24.UseVisualStyleBackColor = false;
+            this.button24.Click += new System.EventHandler(this.questNumbers);
             // 
             // button19
             // 
@@ -531,6 +565,7 @@
             this.button19.TabIndex = 2;
             this.button19.Text = "21";
             this.button19.UseVisualStyleBackColor = false;
+            this.button19.Click += new System.EventHandler(this.questNumbers);
             // 
             // button18
             // 
@@ -543,6 +578,7 @@
             this.button18.TabIndex = 1;
             this.button18.Text = "22";
             this.button18.UseVisualStyleBackColor = false;
+            this.button18.Click += new System.EventHandler(this.questNumbers);
             // 
             // button29
             // 
@@ -555,6 +591,7 @@
             this.button29.TabIndex = 0;
             this.button29.Text = "13";
             this.button29.UseVisualStyleBackColor = false;
+            this.button29.Click += new System.EventHandler(this.questNumbers);
             // 
             // button13
             // 
@@ -567,6 +604,7 @@
             this.button13.TabIndex = 2;
             this.button13.Text = "9";
             this.button13.UseVisualStyleBackColor = false;
+            this.button13.Click += new System.EventHandler(this.questNumbers);
             // 
             // button23
             // 
@@ -579,6 +617,7 @@
             this.button23.TabIndex = 0;
             this.button23.Text = "25";
             this.button23.UseVisualStyleBackColor = false;
+            this.button23.Click += new System.EventHandler(this.questNumbers);
             // 
             // button12
             // 
@@ -591,6 +630,7 @@
             this.button12.TabIndex = 1;
             this.button12.Text = "10";
             this.button12.UseVisualStyleBackColor = false;
+            this.button12.Click += new System.EventHandler(this.questNumbers);
             // 
             // button17
             // 
@@ -603,6 +643,7 @@
             this.button17.TabIndex = 0;
             this.button17.Text = "19";
             this.button17.UseVisualStyleBackColor = false;
+            this.button17.Click += new System.EventHandler(this.questNumbers);
             // 
             // button7
             // 
@@ -615,6 +656,7 @@
             this.button7.TabIndex = 2;
             this.button7.Text = "3";
             this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.questNumbers);
             // 
             // button9
             // 
@@ -627,6 +669,7 @@
             this.button9.TabIndex = 0;
             this.button9.Text = "7";
             this.button9.UseVisualStyleBackColor = false;
+            this.button9.Click += new System.EventHandler(this.questNumbers);
             // 
             // button6
             // 
@@ -639,6 +682,7 @@
             this.button6.TabIndex = 1;
             this.button6.Text = "4";
             this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.questNumbers);
             // 
             // button5
             // 
@@ -651,6 +695,7 @@
             this.button5.TabIndex = 0;
             this.button5.Text = "1";
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.questNumbers);
             // 
             // pictureBox5
             // 
@@ -668,7 +713,7 @@
             this.btnTQgetQuestion.BackColor = System.Drawing.Color.ForestGreen;
             this.btnTQgetQuestion.Font = new System.Drawing.Font("Modern No. 20", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTQgetQuestion.ForeColor = System.Drawing.Color.White;
-            this.btnTQgetQuestion.Location = new System.Drawing.Point(580, 365);
+            this.btnTQgetQuestion.Location = new System.Drawing.Point(584, 403);
             this.btnTQgetQuestion.Name = "btnTQgetQuestion";
             this.btnTQgetQuestion.Size = new System.Drawing.Size(173, 41);
             this.btnTQgetQuestion.TabIndex = 1;
@@ -684,7 +729,7 @@
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Font = new System.Drawing.Font("Modern No. 20", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.White;
-            this.groupBox1.Location = new System.Drawing.Point(48, 284);
+            this.groupBox1.Location = new System.Drawing.Point(13, 292);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(267, 139);
             this.groupBox1.TabIndex = 0;
@@ -1036,5 +1081,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TabPage helpTab;
         private System.Windows.Forms.Button btnTQSubmit;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
