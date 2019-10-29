@@ -102,6 +102,15 @@ namespace QuizMaster
                     case "maths": case "mathematics":
                         Subject_Id = 2;
                         break;
+                case "civic education": case "civic":
+                    Subject_Id = 3;
+                    break;
+                case "basic science":
+                    Subject_Id = 4;
+                    break;
+                case "current affairs":
+                    Subject_Id = 5;
+                    break;
                 }
                 switch (txtLQclass.Text.Trim().ToLower())//Gets the correct class id for question being uploaded
                 {
