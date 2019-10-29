@@ -90,66 +90,79 @@ namespace QuizMaster
         {
             string query = "insert into Question values(@param,@param1,@param2,@param3)";
 
-            
-            
-                int Subject_Id = 0;
-                int class_Id = 0;
-                switch (txtLQsubject.Text.Trim().ToLower())//Gets the correct subject id
-                {
-                    case "english": case "english language":
-                        Subject_Id = 1;
-                        break;
-                    case "maths": case "mathematics":
-                        Subject_Id = 2;
-                        break;
+
+
+            int Subject_Id = 0;
+            int class_Id = 0;
+            switch (txtLQsubject.Text.Trim().ToLower())//Gets the correct subject id
+            {
+                case "english": case "english language":
+                    Subject_Id = 1;
+                    break;
+                case "maths": case "mathematics":
+                    Subject_Id = 2;
+                    break;
                 case "civic education": case "civic":
                     Subject_Id = 3;
                     break;
-                case "basic science":
+                case "basic science": case "basic education":
                     Subject_Id = 4;
                     break;
-                case "current affairs":
+                case "current affairs": case "current affair":
                     Subject_Id = 5;
                     break;
-                }
-                switch (txtLQclass.Text.Trim().ToLower())//Gets the correct class id for question being uploaded
-                {
-                    case "primary 1":
-                        class_Id = 1;
-                        break;
-                    case "primary 2":
-                        class_Id = 2;
-                        break;
-                    case "primary 3":
-                        class_Id = 3;
-                        break;
-                    case "primary 4":
-                        class_Id = 4;
-                        break;
-                    case "primary 5":
-                        class_Id = 5;
-                        break;
-                    case "primary 6":
-                        class_Id = 6;
-                        break;
-                }
+            }
+            switch (txtLQclass.Text.Trim().ToLower())//Gets the correct class id for question being uploaded
+            {
+                case "primary 1":
+                    class_Id = 1;
+                    break;
+                case "primary 2":
+                    class_Id = 2;
+                    break;
+                case "primary 3":
+                    class_Id = 3;
+                    break;
+                case "primary 4":
+                    class_Id = 4;
+                    break;
+                case "primary 5":
+                    class_Id = 5;
+                    break;
+                case "primary 6":
+                    class_Id = 6;
+                    break;
+            }
             //database query for inserting questions 
-                SqlCommand command = new SqlCommand(query, con.connect);
-                command.Parameters.AddWithValue("@param",Subject_Id);
-                command.Parameters.AddWithValue("@param1",txtLQquestion.Text.Trim());
-                command.Parameters.AddWithValue("@param2",class_Id);
-                command.Parameters.AddWithValue("@param3",txtLQmark.Text.Trim());
+
+            SqlCommand command = new SqlCommand(query, con.connect);
+            command.Parameters.AddWithValue("@param", Subject_Id);
+            command.Parameters.AddWithValue("@param1", txtLQquestion.Text.Trim());
+            command.Parameters.AddWithValue("@param2", class_Id);
+            command.Parameters.AddWithValue("@param3", txtLQmark.Text.Trim());
+           
+            if (class_Id == 0 || Subject_Id == 0)//Ensure that a valid subject and class id is selected
+            {
+                MessageBox.Show("Please choose a valid Class and Subject");
+            }
+            else
+            {
                 con.connect.Open();
                 int i = command.ExecuteNonQuery();
                 if (i > 0)
                 {
-                    MessageBox.Show("Question Uploaded successfully","Success",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                    MessageBox.Show("Question Uploaded successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
                     MessageBox.Show("Error occured! Question not loaded", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                con.connect.Close();    
+                con.connect.Close();
+            }
+            con.loadtbl.Clear();//clears the data table 
+            loadQuestGrid.Refresh();
+            con.loadquestions(class_Id.ToString(), Subject_Id.ToString());
+            loadQuestGrid.DataSource = con.loadtbl;
         }
         //load Question end
         private void btnAdminView_Click(object sender, EventArgs e)
@@ -163,14 +176,7 @@ namespace QuizMaster
                 adminviewStudentGrid.Visible = false;
                 adminViewDataGrid.Visible = true;
             }
-            //if (txtViewClass.Text == "")
-            //{
-            //    con.tbl.Clear();//clears the data table 
-            //    adminViewDataGrid.Refresh();
-            //    con.viewQuestions();
-            //    adminViewDataGrid.DataSource = con.tbl;
-            //    adminviewStudentGrid.Visible = false;
-            //}
+           
             else
             {
                 con.tblviewStudent.Clear();//clears the data table 

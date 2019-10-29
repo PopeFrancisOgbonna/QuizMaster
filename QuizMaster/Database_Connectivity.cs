@@ -39,6 +39,7 @@ namespace QuizMaster
         public DataTable tblclassquest = new DataTable();
         public DataTable tblviewStudent = new DataTable();
             public DataTable tblParticipant = new DataTable();
+        public DataTable loadtbl = new DataTable();
         public void viewQuestions()//view all question 
         {
             string query = "select q.Quest_Id as 'Question Number',q.Questions as 'Question',s.Name as 'Subject',c.ClassName as'Class' from Question q, Class c, Subject s where q.Class_Id = c.Class_Id and q.Subject_Id = s.Subject_Id; ";
@@ -46,7 +47,7 @@ namespace QuizMaster
             SqlDataAdapter adapt = new SqlDataAdapter(command);
             adapt.Fill(tblviewQuest);
         }
-        public void viewClassquestions(string klass,string subject)
+        public void viewClassquestions(string klass,string subject)//View Specific class and subject questions
         {
             string query = "select q.Quest_Id as 'Question Number',q.Questions as 'Question',s.Name as 'Subject',c.ClassName as'Class' from Question q, Class c, Subject s where q.Class_Id = c.Class_Id and q.Subject_Id = s.Subject_Id and c.ClassName=@param and s.Name=@param1; ";
             SqlCommand command = new SqlCommand(query, connect);
@@ -54,6 +55,16 @@ namespace QuizMaster
             command.Parameters.AddWithValue("@param1", subject);
             SqlDataAdapter adapt = new SqlDataAdapter(command);
             adapt.Fill(tblclassquest);
+            adapt.Fill(loadtbl);
+        }
+        public void loadquestions(string klass, string subject)//View lloaded questions
+        {
+            string query = "select q.Quest_Id as 'Question Number',q.Questions as 'Question',s.Name as 'Subject',c.ClassName as'Class' from Question q, Class c, Subject s where q.Class_Id = c.Class_Id and q.Subject_Id = s.Subject_Id and c.Class_Id=@param and s.Subject_Id=@param1; ";
+            SqlCommand command = new SqlCommand(query, connect);
+            command.Parameters.AddWithValue("@param", klass);
+            command.Parameters.AddWithValue("@param1", subject);
+            SqlDataAdapter adapt = new SqlDataAdapter(command);
+            adapt.Fill(loadtbl);
         }
         public void viewStudent(string klass) // view student from a specific class
         {

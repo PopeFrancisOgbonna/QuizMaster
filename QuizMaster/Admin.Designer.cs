@@ -199,8 +199,8 @@
             // contentPane
             // 
             this.contentPane.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.contentPane.Controls.Add(this.viewPane);
             this.contentPane.Controls.Add(this.loadQuestionpane);
+            this.contentPane.Controls.Add(this.viewPane);
             this.contentPane.Controls.Add(this.registerPane);
             this.contentPane.Location = new System.Drawing.Point(153, 157);
             this.contentPane.Name = "contentPane";
