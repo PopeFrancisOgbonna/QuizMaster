@@ -88,16 +88,29 @@ namespace QuizMaster
 
         private void btnBonus_Click(object sender, EventArgs e)
         {
-            using (Bonus bonus = new Bonus())
-             {
-                bonus.ShowDialog();
+            if (question ==null)//Checks that a question is picked
+            {
+                MessageBox.Show("Please Take a Question First");
             }
+            else
+            {
+                using (Bonus bonus = new Bonus())
+                {
+                    bonus.question = question;
+                    bonus.txtBonQuestID.Text = questId.ToString();
+                    bonus.txtBonGroup.Text = txtTQgroup.Text;
+                    bonus.txtBonClass.Text = txtTQclass.Text;
+                    bonus.txtBonSubject.Text = comboBox1.SelectedItem.ToString();
+                    bonus.ShowDialog();
+                }
+            }
+           
 
         }
 
         private void btnTQgetQuestion_Click(object sender, EventArgs e)
         {
-            if (comboBox1.SelectedItem.ToString() == "")
+            if (comboBox1.SelectedItem.ToString() == "Choose Subject"||comboBox1.SelectedItem.ToString()=="")
             {
                 MessageBox.Show("Please choose Subject");
             }

@@ -29,21 +29,21 @@
         private void InitializeComponent()
         {
             this.bonusPane = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.btnBonusSubmit = new System.Windows.Forms.Button();
             this.btnBonusRepQuest = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtBonQuestID = new System.Windows.Forms.TextBox();
+            this.txtBonGroup = new System.Windows.Forms.TextBox();
+            this.txtBonSubject = new System.Windows.Forms.TextBox();
+            this.txtBonClass = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.bonusPane.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -60,6 +60,17 @@
             this.bonusPane.Name = "bonusPane";
             this.bonusPane.Size = new System.Drawing.Size(456, 329);
             this.bonusPane.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Mistral", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(183, 3);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(74, 33);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Bonus";
             // 
             // button1
             // 
@@ -86,6 +97,7 @@
             this.btnBonusSubmit.TabIndex = 1;
             this.btnBonusSubmit.Text = "Submit";
             this.btnBonusSubmit.UseVisualStyleBackColor = false;
+            this.btnBonusSubmit.Click += new System.EventHandler(this.btnBonusSubmit_Click);
             // 
             // btnBonusRepQuest
             // 
@@ -98,14 +110,15 @@
             this.btnBonusRepQuest.TabIndex = 0;
             this.btnBonusRepQuest.Text = "Repeat Question";
             this.btnBonusRepQuest.UseVisualStyleBackColor = false;
+            this.btnBonusRepQuest.Click += new System.EventHandler(this.btnBonusRepQuest_Click);
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.textBox7);
-            this.groupBox2.Controls.Add(this.textBox6);
-            this.groupBox2.Controls.Add(this.textBox5);
-            this.groupBox2.Controls.Add(this.textBox4);
-            this.groupBox2.Controls.Add(this.textBox3);
+            this.groupBox2.Controls.Add(this.txtBonQuestID);
+            this.groupBox2.Controls.Add(this.txtBonGroup);
+            this.groupBox2.Controls.Add(this.txtBonSubject);
+            this.groupBox2.Controls.Add(this.txtBonClass);
             this.groupBox2.Controls.Add(this.label17);
             this.groupBox2.Controls.Add(this.label16);
             this.groupBox2.Controls.Add(this.label15);
@@ -128,33 +141,33 @@
             this.textBox7.Size = new System.Drawing.Size(268, 75);
             this.textBox7.TabIndex = 4;
             // 
-            // textBox6
+            // txtBonQuestID
             // 
-            this.textBox6.Location = new System.Drawing.Point(165, 127);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(268, 31);
-            this.textBox6.TabIndex = 3;
+            this.txtBonQuestID.Location = new System.Drawing.Point(165, 127);
+            this.txtBonQuestID.Name = "txtBonQuestID";
+            this.txtBonQuestID.Size = new System.Drawing.Size(268, 31);
+            this.txtBonQuestID.TabIndex = 3;
             // 
-            // textBox5
+            // txtBonGroup
             // 
-            this.textBox5.Location = new System.Drawing.Point(165, 59);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(268, 31);
-            this.textBox5.TabIndex = 1;
+            this.txtBonGroup.Location = new System.Drawing.Point(165, 59);
+            this.txtBonGroup.Name = "txtBonGroup";
+            this.txtBonGroup.Size = new System.Drawing.Size(268, 31);
+            this.txtBonGroup.TabIndex = 1;
             // 
-            // textBox4
+            // txtBonSubject
             // 
-            this.textBox4.Location = new System.Drawing.Point(165, 93);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(268, 31);
-            this.textBox4.TabIndex = 2;
+            this.txtBonSubject.Location = new System.Drawing.Point(165, 93);
+            this.txtBonSubject.Name = "txtBonSubject";
+            this.txtBonSubject.Size = new System.Drawing.Size(268, 31);
+            this.txtBonSubject.TabIndex = 2;
             // 
-            // textBox3
+            // txtBonClass
             // 
-            this.textBox3.Location = new System.Drawing.Point(165, 25);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(268, 31);
-            this.textBox3.TabIndex = 0;
+            this.txtBonClass.Location = new System.Drawing.Point(165, 25);
+            this.txtBonClass.Name = "txtBonClass";
+            this.txtBonClass.Size = new System.Drawing.Size(268, 31);
+            this.txtBonClass.TabIndex = 0;
             // 
             // label17
             // 
@@ -201,17 +214,6 @@
             this.label13.TabIndex = 0;
             this.label13.Text = "Class";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Mistral", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(183, 3);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 33);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Bonus";
-            // 
             // Bonus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -239,15 +241,15 @@
         private System.Windows.Forms.Button btnBonusRepQuest;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label1;
+        public System.Windows.Forms.TextBox txtBonQuestID;
+        public System.Windows.Forms.TextBox txtBonGroup;
+        public System.Windows.Forms.TextBox txtBonSubject;
+        public System.Windows.Forms.TextBox txtBonClass;
     }
 }
